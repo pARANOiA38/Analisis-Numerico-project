@@ -80,7 +80,7 @@ namespace TP1_AnalisisNumerico2021
                         int c = 0;
                         double error = Math.Abs((xr - xant) / xr);
                         double absFxr = Math.Abs(AnalizadorDeFunciones.EvaluaFx(xr));
-                        double tole = Convert.ToDouble(txtMargenError.Text);
+                        double tole = Convert.ToDouble(txtMargenError.Text.Replace(".",","));
                         int iter = Convert.ToInt32(txtIter.Text);
 
                         double resultadoFxr = 0;
@@ -88,6 +88,9 @@ namespace TP1_AnalisisNumerico2021
 
                         while (c < iter)
                         {
+                            resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
+                            resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
+                            
                             c = c + 1;
                             xr = ((VarXi + VarXd) / 2);
                             error = Math.Abs((xr - xant) / xr);
@@ -109,7 +112,18 @@ namespace TP1_AnalisisNumerico2021
 
                             xant = xr;
 
-                            double Fxr = Math.Abs(AnalizadorDeFunciones.EvaluaFx(xr));
+                            double Fxr = 0;
+
+                            if (resultadoFxr < 0)
+                            {
+                                Fxr = resultadoFxr * -1;
+                            }
+                            else
+                            {
+                                Fxr = resultadoFxr;
+                            }
+
+                            
 
                             if (Fxr < tole)
                             {
@@ -123,27 +137,22 @@ namespace TP1_AnalisisNumerico2021
                                     bandera = true;
                                     break;
                                 }
-                                else
-                                {
-                                    if (c >= iter)
-                                    {
-                                        bandera = true;
-                                        break;
-                                    }
-                                }
                             }
 
                         }
 
-                        if (bandera == false)
+                        if (!bandera)
                         {
                             lblConverge.Text = "NO";
-                            lblnfo.Text = "NO HAY RAIZ";
+                            lblnfo.Text = "ITERACIONES MAXIMAS SUPERADAS";
                         }
                         else
                         {
                             lblConverge.Text = "SI";
-                            lblnfo.Text = "HAY RAIZ Y ES: " + xr;
+                            lblnfo.Text = "HAY RAIZ";
+                            lblIter.Text = Convert.ToString(c);
+                            lblRaiz.Text = Convert.ToString(xr);
+
                         }
                        
                     }

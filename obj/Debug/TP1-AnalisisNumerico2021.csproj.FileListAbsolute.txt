@@ -37,3 +37,16 @@ C:\Users\emmas\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-A
 C:\Users\emmas\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.csproj.CopyComplete
 C:\Users\emmas\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.exe
 C:\Users\emmas\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.pdb
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\bin\Debug\TP1-AnalisisNumerico2021.exe.config
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\bin\Debug\TP1-AnalisisNumerico2021.exe
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\bin\Debug\TP1-AnalisisNumerico2021.pdb
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\bin\Debug\Calculus.dll
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.csprojAssemblyReference.cache
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1_AnalisisNumerico2021.Menu.resources
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1_AnalisisNumerico2021.Properties.Resources.resources
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1_AnalisisNumerico2021.Unidad1.resources
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.csproj.GenerateResource.cache
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.csproj.CoreCompileInputs.cache
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.csproj.CopyComplete
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.exe
+C:\Users\Supervisor-PC\Desktop\EmmanuelSchenoni\TP1-AnalisisNumerico2021\obj\Debug\TP1-AnalisisNumerico2021.pdb
