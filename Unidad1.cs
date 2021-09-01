@@ -107,7 +107,7 @@ namespace TP1_AnalisisNumerico2021
 
                             double Fxr = 0;
 
-                            //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/
+                            //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
 
                             if (resultadoFxr < 0)
                             {
