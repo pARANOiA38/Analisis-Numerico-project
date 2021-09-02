@@ -73,33 +73,26 @@ namespace TP1_AnalisisNumerico2021
                     }
                     else
                     {
+                        double xr = 0;
                         bool bandera = false;
-
-                        double xr = Convert.ToInt32((VarXi + VarXd) / 2);
                         double xant = 0;
                         int c = 0;
-                        double error = Math.Abs((xr - xant) / xr);
-                        double absFxr = Math.Abs(AnalizadorDeFunciones.EvaluaFx(xr));
-                        double tole = Convert.ToDouble(txtMargenError.Text.Replace(".",","));
+                        double tole = Convert.ToDouble(txtMargenError.Text);
                         int iter = Convert.ToInt32(txtIter.Text);
-
-                        double resultadoFxr = 0;
-                        double productoXiXr = 0;
 
                         while (c < iter)
                         {
                             resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                            resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
-                            
+
                             c = c + 1;
                             xr = ((VarXi + VarXd) / 2);
-                            error = Math.Abs((xr - xant) / xr);
+                            double error = Math.Abs((xr - xant) / xr);
 
-                            //-------------------
+                            //----------------------------------------------------------------
 
-                            resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
+                            double resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
 
-                            productoXiXr = (resultadoFxr * resultadoFxi);
+                            double productoXiXr = (resultadoFxr * resultadoFxi);
 
                             if (productoXiXr < 0)
                             {
@@ -114,6 +107,8 @@ namespace TP1_AnalisisNumerico2021
 
                             double Fxr = 0;
 
+                            //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
+
                             if (resultadoFxr < 0)
                             {
                                 Fxr = resultadoFxr * -1;
@@ -123,7 +118,7 @@ namespace TP1_AnalisisNumerico2021
                                 Fxr = resultadoFxr;
                             }
 
-                            
+                            //-------------------------------- Condiciones del corte del while
 
                             if (Fxr < tole)
                             {
@@ -154,7 +149,7 @@ namespace TP1_AnalisisNumerico2021
                             lblRaiz.Text = Convert.ToString(xr);
 
                         }
-                       
+
                     }
                 }
 
