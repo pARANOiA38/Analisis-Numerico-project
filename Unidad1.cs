@@ -38,12 +38,9 @@ namespace TP1_AnalisisNumerico2021
             else
             {
                 lblSintaxis.Visible = false;
-                int VarXii = Convert.ToInt32(txtXiFx.Text);
-                int VarXdd = Convert.ToInt32(txtXdXini.Text);
-
-                double VarXi = Convert.ToDouble(VarXii);
-                double VarXd = Convert.ToDouble(VarXdd);
-
+                double VarXi = Convert.ToDouble(txtXiFx.Text);
+                double VarXd = Convert.ToDouble(txtXdXini.Text);
+              
                 bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
 
                 if (condicion == false)
@@ -190,11 +187,9 @@ namespace TP1_AnalisisNumerico2021
             else
             {
                 lblSintaxis.Visible = false;
-                int VarXii = Convert.ToInt32(txtXiFx.Text);
-                int VarXdd = Convert.ToInt32(txtXdXini.Text);
-
-                double VarXi = Convert.ToDouble(VarXii);
-                double VarXd = Convert.ToDouble(VarXdd);
+                
+                double VarXi = Convert.ToDouble(txtXiFx.Text);
+                double VarXd = Convert.ToDouble(txtXdXini.Text);
 
                 bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
 
@@ -345,6 +340,107 @@ namespace TP1_AnalisisNumerico2021
 
                 double Xini = Convert.ToDouble(txtXdXini.Text);
                 double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
+                string FxPrima = txtXiFx.Text;
+
+                double absFxini = Math.Abs(Fxini);
+
+                double tole = Convert.ToDouble(txtMargenError.Text);
+
+                if (absFxini < tole)
+                {
+                    lblConverge.Text = "SI";
+                    lblnfo.Text = "HAY RAIZ";
+                    lblIter.Text = "0";
+                    lblRaiz.Text = Convert.ToString(Xini);
+                }
+                else
+                {
+                    int c = 0;
+                    double Xant = 0;
+                    int iter = Convert.ToInt32(txtIter.Text);
+                    double xr = 0;
+                    bool bandera = false;
+
+                    while (c < iter)
+                    {
+                        c = c++;
+
+                        double Fxiniprima = 0;
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                        {
+                            Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
+                        }
+                        if (AnalizadorDeFunciones.Sintaxis(FxPrima, X) == false)
+                        {
+                            lblSintaxis.Visible = true;
+                            lblSintaxis.Text = "Derivada de la funcion mal escrita";
+                        }
+                        else
+                        {                            
+                            lblSintaxis.Visible = false;
+                            Fxiniprima = AnalizadorDeFunciones.EvaluaFx(Xini);
+
+                            xr = Xini - (Fxini / Fxiniprima);
+
+                            double error = Math.Abs((xr - Xant) / xr);
+
+                            double Fxr = 0;
+
+                            //------------------------------------------------------------------
+                            
+                            Xini = xr;
+
+                            Xant = xr;
+
+                            double resultadoFxr = 0;
+
+                            if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                            {
+                                resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
+                            }
+                            //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
+
+                            if (resultadoFxr < 0)
+                            {
+                                Fxr = resultadoFxr * -1;
+                            }
+                            else
+                            {
+                                Fxr = resultadoFxr;
+                            }
+
+                            //-------------------------------- Condiciones del corte del while
+
+                            if (Fxr < tole)
+                            {
+                                bandera = true;
+                                break;
+                            }
+                            else
+                            {
+                                if (error < tole)
+                                {
+                                    bandera = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!bandera)
+                    {
+                        lblConverge.Text = "NO";
+                        lblnfo.Text = "ITERACIONES MAXIMAS SUPERADAS";
+                    }
+                    else
+                    {
+                        lblConverge.Text = "SI";
+                        lblnfo.Text = "HAY RAIZ";
+                        lblIter.Text = Convert.ToString(c);
+                        lblRaiz.Text = Convert.ToString(xr);
+
+                    }
+                }
 
 
             }
