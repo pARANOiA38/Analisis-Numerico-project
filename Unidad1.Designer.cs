@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblEdit1 = new System.Windows.Forms.Label();
+            this.lblEdit2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtFx = new System.Windows.Forms.TextBox();
-            this.txtXi = new System.Windows.Forms.TextBox();
-            this.txtXd = new System.Windows.Forms.TextBox();
+            this.txtXiFx = new System.Windows.Forms.TextBox();
+            this.txtXdXini = new System.Windows.Forms.TextBox();
             this.txtIter = new System.Windows.Forms.TextBox();
             this.txtMargenError = new System.Windows.Forms.TextBox();
             this.lblSintaxis = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnBiseccion = new System.Windows.Forms.Button();
+            this.btnReglaFalsa = new System.Windows.Forms.Button();
+            this.btnNewton = new System.Windows.Forms.Button();
+            this.btnSecante = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.lblIter = new System.Windows.Forms.Label();
             this.lblnfo = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.checkBoxCerrado = new System.Windows.Forms.CheckBox();
+            this.checkBoxAbierto = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -64,25 +66,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Función F(x):";
             // 
-            // label2
+            // lblEdit1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Variable X(i):";
+            this.lblEdit1.AutoSize = true;
+            this.lblEdit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdit1.Location = new System.Drawing.Point(17, 77);
+            this.lblEdit1.Name = "lblEdit1";
+            this.lblEdit1.Size = new System.Drawing.Size(15, 20);
+            this.lblEdit1.TabIndex = 1;
+            this.lblEdit1.Text = "-";
             // 
-            // label3
+            // lblEdit2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Variable X(d):";
+            this.lblEdit2.AutoSize = true;
+            this.lblEdit2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdit2.Location = new System.Drawing.Point(17, 114);
+            this.lblEdit2.Name = "lblEdit2";
+            this.lblEdit2.Size = new System.Drawing.Size(15, 20);
+            this.lblEdit2.TabIndex = 2;
+            this.lblEdit2.Text = "-";
             // 
             // label4
             // 
@@ -111,19 +113,19 @@
             this.txtFx.Size = new System.Drawing.Size(100, 20);
             this.txtFx.TabIndex = 5;
             // 
-            // txtXi
+            // txtXiFx
             // 
-            this.txtXi.Location = new System.Drawing.Point(156, 79);
-            this.txtXi.Name = "txtXi";
-            this.txtXi.Size = new System.Drawing.Size(100, 20);
-            this.txtXi.TabIndex = 6;
+            this.txtXiFx.Location = new System.Drawing.Point(156, 79);
+            this.txtXiFx.Name = "txtXiFx";
+            this.txtXiFx.Size = new System.Drawing.Size(100, 20);
+            this.txtXiFx.TabIndex = 6;
             // 
-            // txtXd
+            // txtXdXini
             // 
-            this.txtXd.Location = new System.Drawing.Point(156, 116);
-            this.txtXd.Name = "txtXd";
-            this.txtXd.Size = new System.Drawing.Size(100, 20);
-            this.txtXd.TabIndex = 7;
+            this.txtXdXini.Location = new System.Drawing.Point(156, 116);
+            this.txtXdXini.Name = "txtXdXini";
+            this.txtXdXini.Size = new System.Drawing.Size(100, 20);
+            this.txtXdXini.TabIndex = 7;
             // 
             // txtIter
             // 
@@ -144,49 +146,50 @@
             this.lblSintaxis.AutoSize = true;
             this.lblSintaxis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSintaxis.ForeColor = System.Drawing.Color.Red;
-            this.lblSintaxis.Location = new System.Drawing.Point(86, 9);
+            this.lblSintaxis.Location = new System.Drawing.Point(3, 3);
             this.lblSintaxis.Name = "lblSintaxis";
             this.lblSintaxis.Size = new System.Drawing.Size(342, 16);
             this.lblSintaxis.TabIndex = 10;
             this.lblSintaxis.Text = "Error de sintaxix, vuelva a escribir la función F(x)";
             // 
-            // button1
+            // btnBiseccion
             // 
-            this.button1.Location = new System.Drawing.Point(30, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Metodo 1 ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBiseccion.Location = new System.Drawing.Point(30, 248);
+            this.btnBiseccion.Name = "btnBiseccion";
+            this.btnBiseccion.Size = new System.Drawing.Size(75, 23);
+            this.btnBiseccion.TabIndex = 11;
+            this.btnBiseccion.Text = "Bisección";
+            this.btnBiseccion.UseVisualStyleBackColor = true;
+            this.btnBiseccion.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnReglaFalsa
             // 
-            this.button2.Location = new System.Drawing.Point(153, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Metodo 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnReglaFalsa.Location = new System.Drawing.Point(153, 248);
+            this.btnReglaFalsa.Name = "btnReglaFalsa";
+            this.btnReglaFalsa.Size = new System.Drawing.Size(75, 23);
+            this.btnReglaFalsa.TabIndex = 12;
+            this.btnReglaFalsa.Text = "Regla falsa";
+            this.btnReglaFalsa.UseVisualStyleBackColor = true;
+            this.btnReglaFalsa.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnNewton
             // 
-            this.button3.Location = new System.Drawing.Point(270, 248);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Metodo 3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnNewton.Location = new System.Drawing.Point(270, 248);
+            this.btnNewton.Name = "btnNewton";
+            this.btnNewton.Size = new System.Drawing.Size(75, 23);
+            this.btnNewton.TabIndex = 13;
+            this.btnNewton.Text = "Newton-R";
+            this.btnNewton.UseVisualStyleBackColor = true;
+            this.btnNewton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btnSecante
             // 
-            this.button4.Location = new System.Drawing.Point(383, 248);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Metodo 4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSecante.Location = new System.Drawing.Point(383, 248);
+            this.btnSecante.Name = "btnSecante";
+            this.btnSecante.Size = new System.Drawing.Size(75, 23);
+            this.btnSecante.TabIndex = 14;
+            this.btnSecante.Text = "Secante";
+            this.btnSecante.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -278,11 +281,37 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // checkBoxCerrado
+            // 
+            this.checkBoxCerrado.AutoSize = true;
+            this.checkBoxCerrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxCerrado.Location = new System.Drawing.Point(76, 225);
+            this.checkBoxCerrado.Name = "checkBoxCerrado";
+            this.checkBoxCerrado.Size = new System.Drawing.Size(127, 17);
+            this.checkBoxCerrado.TabIndex = 24;
+            this.checkBoxCerrado.Text = "Metodos cerrados";
+            this.checkBoxCerrado.UseVisualStyleBackColor = true;
+            this.checkBoxCerrado.CheckedChanged += new System.EventHandler(this.checkBoxCerrado_CheckedChanged);
+            // 
+            // checkBoxAbierto
+            // 
+            this.checkBoxAbierto.AutoSize = true;
+            this.checkBoxAbierto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAbierto.Location = new System.Drawing.Point(303, 224);
+            this.checkBoxAbierto.Name = "checkBoxAbierto";
+            this.checkBoxAbierto.Size = new System.Drawing.Size(123, 17);
+            this.checkBoxAbierto.TabIndex = 25;
+            this.checkBoxAbierto.Text = "Metodos abiertos";
+            this.checkBoxAbierto.UseVisualStyleBackColor = true;
+            this.checkBoxAbierto.CheckedChanged += new System.EventHandler(this.checkBoxAbierto_CheckedChanged);
+            // 
             // Unidad1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 427);
+            this.Controls.Add(this.checkBoxAbierto);
+            this.Controls.Add(this.checkBoxCerrado);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.lblnfo);
             this.Controls.Add(this.lblIter);
@@ -292,20 +321,20 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSecante);
+            this.Controls.Add(this.btnNewton);
+            this.Controls.Add(this.btnReglaFalsa);
+            this.Controls.Add(this.btnBiseccion);
             this.Controls.Add(this.lblSintaxis);
             this.Controls.Add(this.txtMargenError);
             this.Controls.Add(this.txtIter);
-            this.Controls.Add(this.txtXd);
-            this.Controls.Add(this.txtXi);
+            this.Controls.Add(this.txtXdXini);
+            this.Controls.Add(this.txtXiFx);
             this.Controls.Add(this.txtFx);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblEdit2);
+            this.Controls.Add(this.lblEdit1);
             this.Controls.Add(this.label1);
             this.Name = "Unidad1";
             this.Text = "Unidad1";
@@ -317,20 +346,20 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblEdit1;
+        private System.Windows.Forms.Label lblEdit2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFx;
-        private System.Windows.Forms.TextBox txtXi;
-        private System.Windows.Forms.TextBox txtXd;
+        private System.Windows.Forms.TextBox txtXiFx;
+        private System.Windows.Forms.TextBox txtXdXini;
         private System.Windows.Forms.TextBox txtIter;
         private System.Windows.Forms.TextBox txtMargenError;
         private System.Windows.Forms.Label lblSintaxis;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnBiseccion;
+        private System.Windows.Forms.Button btnReglaFalsa;
+        private System.Windows.Forms.Button btnNewton;
+        private System.Windows.Forms.Button btnSecante;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -340,5 +369,7 @@
         private System.Windows.Forms.Label lblIter;
         private System.Windows.Forms.Label lblnfo;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.CheckBox checkBoxCerrado;
+        private System.Windows.Forms.CheckBox checkBoxAbierto;
     }
 }
