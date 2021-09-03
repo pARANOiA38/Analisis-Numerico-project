@@ -330,7 +330,24 @@ namespace TP1_AnalisisNumerico2021
         {
             Calculo AnalizadorDeFunciones = new Calculo();
 
-            
+            char X = Convert.ToChar("x");
+            string FuncionFx = Convert.ToString(txtFx.Text);
+            string DerivadaFx = Convert.ToString(txtXiFx.Text);
+
+            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXiFx.Text == "" | txtXdXini.Text == "")
+            {
+                lblSintaxis.Text = "Uno o varios campos no contienen datos, vuelva a escribirlos";
+                lblSintaxis.Visible = true;
+            }
+            else
+            {
+                lblSintaxis.Visible = false;
+
+                double Xini = Convert.ToDouble(txtXdXini.Text);
+                double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
+
+
+            }
         }
 
         private void checkBoxCerrado_CheckedChanged(object sender, EventArgs e)
