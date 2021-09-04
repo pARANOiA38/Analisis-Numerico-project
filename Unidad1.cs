@@ -329,6 +329,8 @@ namespace TP1_AnalisisNumerico2021
             string FuncionFx = Convert.ToString(txtFx.Text);
             string DerivadaFx = Convert.ToString(txtXiFx.Text);
 
+            bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
+
             if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXiFx.Text == "" | txtXdXini.Text == "")
             {
                 lblSintaxis.Text = "Uno o varios campos no contienen datos, vuelva a escribirlos";
@@ -337,6 +339,8 @@ namespace TP1_AnalisisNumerico2021
             else
             {
                 lblSintaxis.Visible = false;
+
+                
 
                 double Xini = Convert.ToDouble(txtXdXini.Text);
                 double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
@@ -391,6 +395,8 @@ namespace TP1_AnalisisNumerico2021
                             Xini = xr;
 
                             Xant = xr;
+
+                            //----CONDICIONES DE CORTE-----------------------------------------
 
                             double resultadoFxr = 0;
 
@@ -493,3 +499,5 @@ namespace TP1_AnalisisNumerico2021
         }
     }
 }
+
+
