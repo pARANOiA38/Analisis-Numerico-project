@@ -23,7 +23,7 @@ namespace TP1_AnalisisNumerico2021
             btnSecante.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBiseccion_Click(object sender, EventArgs e)
         {
             Calculo AnalizadorDeFunciones = new Calculo();
             
@@ -172,7 +172,7 @@ namespace TP1_AnalisisNumerico2021
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnReglaFalsa_Click(object sender, EventArgs e)
         {
             Calculo AnalizadorDeFunciones = new Calculo();
 
@@ -321,17 +321,17 @@ namespace TP1_AnalisisNumerico2021
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnNewton_Click(object sender, EventArgs e)
         {
             Calculo AnalizadorDeFunciones = new Calculo();
 
             char X = Convert.ToChar("x");
             string FuncionFx = Convert.ToString(txtFx.Text);
-            string DerivadaFx = Convert.ToString(txtXiFx.Text);
+            //string DerivadaFx = Convert.ToString(txtXiFx.Text);
 
             bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
 
-            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXiFx.Text == "" | txtXdXini.Text == "")
+            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXiFx.Text == "")
             {
                 lblSintaxis.Text = "Uno o varios campos no contienen datos, vuelva a escribirlos";
                 lblSintaxis.Visible = true;
@@ -344,7 +344,7 @@ namespace TP1_AnalisisNumerico2021
 
                 double Xini = Convert.ToDouble(txtXdXini.Text);
                 double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
-                string FxPrima = txtXiFx.Text;
+                //string FxPrima = txtXiFx.Text;
 
                 double absFxini = Math.Abs(Fxini);
 
@@ -367,70 +367,65 @@ namespace TP1_AnalisisNumerico2021
 
                     while (c < iter)
                     {
-                        c = c++;
+                        c++;
 
                         double Fxiniprima = 0;
                         if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
                         {
                             Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
-                        }
-                        if (AnalizadorDeFunciones.Sintaxis(FxPrima, X) == false)
+                        }                     
+                        
+                                             
+                        lblSintaxis.Visible = false;
+                        Fxiniprima = AnalizadorDeFunciones.Dx(Xini);
+
+                        xr = Xini - (Fxini / Fxiniprima);
+
+                        double error = Math.Abs((xr - Xant) / xr);
+
+                        double Fxr = 0;
+
+                        //------------------------------------------------------------------
+                            
+                        Xini = xr;
+
+                        Xant = xr;
+
+                        //----CONDICIONES DE CORTE-----------------------------------------
+
+                        double resultadoFxr = 0;
+
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
                         {
-                            lblSintaxis.Visible = true;
-                            lblSintaxis.Text = "Derivada de la funcion mal escrita";
+                            resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
+                        }
+                        //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
+
+                        if (resultadoFxr < 0)
+                        {
+                            Fxr = resultadoFxr * -1;
                         }
                         else
-                        {                            
-                            lblSintaxis.Visible = false;
-                            Fxiniprima = AnalizadorDeFunciones.EvaluaFx(Xini);
+                        {
+                            Fxr = resultadoFxr;
+                        }
 
-                            xr = Xini - (Fxini / Fxiniprima);
+                        //-------------------------------- Condiciones del corte del while
 
-                            double error = Math.Abs((xr - Xant) / xr);
-
-                            double Fxr = 0;
-
-                            //------------------------------------------------------------------
-                            
-                            Xini = xr;
-
-                            Xant = xr;
-
-                            //----CONDICIONES DE CORTE-----------------------------------------
-
-                            double resultadoFxr = 0;
-
-                            if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                            {
-                                resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
-                            }
-                            //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
-
-                            if (resultadoFxr < 0)
-                            {
-                                Fxr = resultadoFxr * -1;
-                            }
-                            else
-                            {
-                                Fxr = resultadoFxr;
-                            }
-
-                            //-------------------------------- Condiciones del corte del while
-
-                            if (Fxr < tole)
+                        if (Fxr < tole)
+                        {
+                            bandera = true;
+                            break;
+                        }
+                        else
+                        {
+                            if (error < tole)
                             {
                                 bandera = true;
                                 break;
                             }
-                            else
-                            {
-                                if (error < tole)
-                                {
-                                    bandera = true;
-                                    break;
-                                }
-                            }
                         }
+                        
                     }
 
                     if (!bandera)
@@ -481,7 +476,7 @@ namespace TP1_AnalisisNumerico2021
             {
                 checkBoxCerrado.Enabled = false;
                 checkBoxCerrado.Checked = false;
-                lblEdit1.Text = "Derivada F'(x):";
+                lblEdit1.Text = "-";
                 lblEdit2.Text = "X ini:";
                 btnNewton.Enabled = true;
                 btnSecante.Enabled = true;
@@ -496,6 +491,11 @@ namespace TP1_AnalisisNumerico2021
                 lblEdit2.Text = "-";
                 checkBoxCerrado.Enabled = true;
             }
+        }
+
+        private void btnSecante_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

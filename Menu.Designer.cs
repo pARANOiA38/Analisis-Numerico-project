@@ -84,7 +84,7 @@
             this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 4;
             this.label1.Tag = "";
-            this.label1.Text = "Analisis Numerico 2021";
+            this.label1.Text = "Analisis Numerico 2022";
             // 
             // label2
             // 
@@ -101,10 +101,10 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(60, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(267, 13);
+            this.label3.Size = new System.Drawing.Size(183, 13);
             this.label3.TabIndex = 6;
             this.label3.Tag = "";
-            this.label3.Text = "Emmanuel Schenoni, Gastón Leonardi y Matías Casale";
+            this.label3.Text = "Emmanuel Schenoni y Matías Casale";
             // 
             // label4
             // 
@@ -146,7 +146,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Menu";
             this.Tag = "aa";
-            this.Text = "Form1";
+            this.Text = "Menú";
             this.ResumeLayout(false);
             this.PerformLayout();
 

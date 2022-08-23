@@ -1,0 +1,14 @@
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\bin\Debug\TP1-AnalisisNumerico2021.exe.config
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\bin\Debug\TP1-AnalisisNumerico2021.exe
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\bin\Debug\TP1-AnalisisNumerico2021.pdb
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\bin\Debug\Calculus.dll
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2022.csproj.AssemblyReference.cache
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2022.csproj.SuggestedBindingRedirects.cache
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1_AnalisisNumerico2021.Menu.resources
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1_AnalisisNumerico2021.Properties.Resources.resources
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1_AnalisisNumerico2021.Unidad1.resources
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2022.csproj.GenerateResource.cache
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2022.csproj.CoreCompileInputs.cache
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2022.csproj.CopyComplete
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2021.exe
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1-AnalisisNumerico2021.pdb

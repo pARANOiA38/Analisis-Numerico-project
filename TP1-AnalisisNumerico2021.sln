@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30406.217
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP1-AnalisisNumerico2021", "TP1-AnalisisNumerico2021.csproj", "{13FFA670-0EE0-4ACC-A0AC-B64D8A7F9C06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP1-AnalisisNumerico2022", "TP1-AnalisisNumerico2022.csproj", "{13FFA670-0EE0-4ACC-A0AC-B64D8A7F9C06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

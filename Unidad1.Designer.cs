@@ -148,7 +148,7 @@
             this.lblSintaxis.ForeColor = System.Drawing.Color.Red;
             this.lblSintaxis.Location = new System.Drawing.Point(3, 3);
             this.lblSintaxis.Name = "lblSintaxis";
-            this.lblSintaxis.Size = new System.Drawing.Size(342, 16);
+            this.lblSintaxis.Size = new System.Drawing.Size(341, 16);
             this.lblSintaxis.TabIndex = 10;
             this.lblSintaxis.Text = "Error de sintaxix, vuelva a escribir la función F(x)";
             // 
@@ -160,7 +160,7 @@
             this.btnBiseccion.TabIndex = 11;
             this.btnBiseccion.Text = "Bisección";
             this.btnBiseccion.UseVisualStyleBackColor = true;
-            this.btnBiseccion.Click += new System.EventHandler(this.button1_Click);
+            this.btnBiseccion.Click += new System.EventHandler(this.btnBiseccion_Click);
             // 
             // btnReglaFalsa
             // 
@@ -170,7 +170,7 @@
             this.btnReglaFalsa.TabIndex = 12;
             this.btnReglaFalsa.Text = "Regla falsa";
             this.btnReglaFalsa.UseVisualStyleBackColor = true;
-            this.btnReglaFalsa.Click += new System.EventHandler(this.button2_Click);
+            this.btnReglaFalsa.Click += new System.EventHandler(this.btnReglaFalsa_Click);
             // 
             // btnNewton
             // 
@@ -180,7 +180,7 @@
             this.btnNewton.TabIndex = 13;
             this.btnNewton.Text = "Newton-R";
             this.btnNewton.UseVisualStyleBackColor = true;
-            this.btnNewton.Click += new System.EventHandler(this.button3_Click);
+            this.btnNewton.Click += new System.EventHandler(this.btnNewton_Click);
             // 
             // btnSecante
             // 
@@ -190,6 +190,7 @@
             this.btnSecante.TabIndex = 14;
             this.btnSecante.Text = "Secante";
             this.btnSecante.UseVisualStyleBackColor = true;
+            this.btnSecante.Click += new System.EventHandler(this.btnSecante_Click);
             // 
             // label6
             // 
@@ -197,7 +198,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(16, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 16);
+            this.label6.Size = new System.Drawing.Size(78, 16);
             this.label6.TabIndex = 15;
             this.label6.Text = "Converge:";
             // 
@@ -207,7 +208,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(18, 316);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 16);
+            this.label7.Size = new System.Drawing.Size(42, 16);
             this.label7.TabIndex = 16;
             this.label7.Text = "Raíz:";
             // 
@@ -217,7 +218,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 343);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(169, 16);
+            this.label8.Size = new System.Drawing.Size(168, 16);
             this.label8.TabIndex = 17;
             this.label8.Text = "Número de iteraciones:";
             // 
@@ -227,7 +228,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(18, 370);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(160, 16);
+            this.label9.Size = new System.Drawing.Size(159, 16);
             this.label9.TabIndex = 18;
             this.label9.Text = "Información adicional:";
             // 
@@ -237,7 +238,7 @@
             this.lblConverge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConverge.Location = new System.Drawing.Point(101, 291);
             this.lblConverge.Name = "lblConverge";
-            this.lblConverge.Size = new System.Drawing.Size(12, 16);
+            this.lblConverge.Size = new System.Drawing.Size(11, 16);
             this.lblConverge.TabIndex = 19;
             this.lblConverge.Text = "-";
             // 
@@ -247,7 +248,7 @@
             this.lblRaiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRaiz.Location = new System.Drawing.Point(67, 316);
             this.lblRaiz.Name = "lblRaiz";
-            this.lblRaiz.Size = new System.Drawing.Size(12, 16);
+            this.lblRaiz.Size = new System.Drawing.Size(11, 16);
             this.lblRaiz.TabIndex = 20;
             this.lblRaiz.Text = "-";
             // 
@@ -257,7 +258,7 @@
             this.lblIter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIter.Location = new System.Drawing.Point(193, 343);
             this.lblIter.Name = "lblIter";
-            this.lblIter.Size = new System.Drawing.Size(12, 16);
+            this.lblIter.Size = new System.Drawing.Size(11, 16);
             this.lblIter.TabIndex = 21;
             this.lblIter.Text = "-";
             // 
@@ -267,7 +268,7 @@
             this.lblnfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnfo.Location = new System.Drawing.Point(184, 370);
             this.lblnfo.Name = "lblnfo";
-            this.lblnfo.Size = new System.Drawing.Size(12, 16);
+            this.lblnfo.Size = new System.Drawing.Size(11, 16);
             this.lblnfo.TabIndex = 22;
             this.lblnfo.Text = "-";
             // 
