@@ -21,8 +21,26 @@ namespace TP1_AnalisisNumerico2021
             btnReglaFalsa.Enabled = false;
             btnNewton.Enabled = false;
             btnSecante.Enabled = false;
-        }
+            
 
+            DesactivarTextBoxs();
+        }
+        private void DesactivarTextBoxs()
+        {
+            txtFx.Enabled = false;
+            txtIter.Enabled = false;
+            txtMargenError.Enabled = false;
+            txtXdXini.Enabled = false;
+            txtXiFx.Enabled = false;
+            txtXini2.Enabled = false;
+
+            txtFx.Text = null;
+            txtIter.Text = null;
+            txtMargenError.Text = null;
+            txtXdXini.Text = null;
+            txtXiFx.Text = null;
+            txtXini2.Text = null;
+        }
         private void btnBiseccion_Click(object sender, EventArgs e)
         {
             Calculo AnalizadorDeFunciones = new Calculo();
@@ -202,8 +220,21 @@ namespace TP1_AnalisisNumerico2021
                 {
                     lblSintaxis.Visible = false;
 
-                    double resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                    double resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
+                    double resultadoFxi = 0;
+                    double resultadoFxd = 0;
+
+                    if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                    {
+                        resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
+                    }
+
+                    if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                    {
+                        resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
+                    }
+
+                    //double resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
+                    //double resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
                     double productoFxiFxd = resultadoFxd * resultadoFxi;
 
                     if (productoFxiFxd > 0)
@@ -242,8 +273,18 @@ namespace TP1_AnalisisNumerico2021
 
                             while (c < iter)
                             {
-                                resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                                resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
+                                if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                                {
+                                    resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
+                                }
+
+                                if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                                {
+                                    resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
+                                }
+
+                                //resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
+                                //resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
 
                                 double productoFxdxi = resultadoFxd * VarXi;
                                 double productoFxixd = resultadoFxi * VarXd;
@@ -325,32 +366,33 @@ namespace TP1_AnalisisNumerico2021
         {
             Calculo AnalizadorDeFunciones = new Calculo();
 
+            
             char X = Convert.ToChar("x");
             string FuncionFx = Convert.ToString(txtFx.Text);
-            //string DerivadaFx = Convert.ToString(txtXiFx.Text);
 
             bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
 
-            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXiFx.Text == "")
+            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXdXini.Text == "")
             {
                 lblSintaxis.Text = "Uno o varios campos no contienen datos, vuelva a escribirlos";
                 lblSintaxis.Visible = true;
             }
             else
             {
+                int iter = Convert.ToInt32(txtIter.Text);
+                double xr = 0;
+                bool bandera = false;
+
                 lblSintaxis.Visible = false;
 
-                
-
-                double Xini = Convert.ToDouble(txtXdXini.Text);
-                double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
-                //string FxPrima = txtXiFx.Text;
+                double Xini = Convert.ToDouble(txtXdXini.Text); // Convierto a double Xini
+                double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini); // Evaluo F(xini) 
 
                 double absFxini = Math.Abs(Fxini);
 
-                double tole = Convert.ToDouble(txtMargenError.Text);
+                double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
 
-                if (absFxini < tole)
+                if (absFxini == 0) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
                 {
                     lblConverge.Text = "SI";
                     lblnfo.Text = "HAY RAIZ";
@@ -359,55 +401,38 @@ namespace TP1_AnalisisNumerico2021
                 }
                 else
                 {
+                    // INICIALIZO VARIABLES 
+                    
                     int c = 0;
                     double Xant = 0;
-                    int iter = Convert.ToInt32(txtIter.Text);
-                    double xr = 0;
-                    bool bandera = false;
+
+                    //----------------------------------------------
 
                     while (c < iter)
                     {
-                        c++;
+                        c++; // Comienza a contar el contador de Iteraciones
 
-                        double Fxiniprima = 0;
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
                         {
                             Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
                         }                     
-                        
                                              
                         lblSintaxis.Visible = false;
-                        Fxiniprima = AnalizadorDeFunciones.Dx(Xini);
 
-                        xr = Xini - (Fxini / Fxiniprima);
+                        double Fxiniprima = AnalizadorDeFunciones.Dx(Xini); // Calculo la derivada de Fx(xini) con CALCULUS
 
-                        double error = Math.Abs((xr - Xant) / xr);
+                        xr = (Xini - (Fxini / Fxiniprima));
+
+                        double error = Math.Abs((xr - Xant) / xr); // Calculo el error
+
+                        //----CALCULO DE Fx(xr)-----------------------------------------
 
                         double Fxr = 0;
 
-                        //------------------------------------------------------------------
-                            
-                        Xini = xr;
-
-                        Xant = xr;
-
-                        //----CONDICIONES DE CORTE-----------------------------------------
-
-                        double resultadoFxr = 0;
-
                         if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
                         {
-                            resultadoFxr = AnalizadorDeFunciones.EvaluaFx(xr);
-                        }
-                        //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
-
-                        if (resultadoFxr < 0)
-                        {
-                            Fxr = resultadoFxr * -1;
-                        }
-                        else
-                        {
-                            Fxr = resultadoFxr;
+                            Fxr = AnalizadorDeFunciones.EvaluaFx(xr);
+                            Fxr = Math.Abs(Fxr); 
                         }
 
                         //-------------------------------- Condiciones del corte del while
@@ -423,6 +448,11 @@ namespace TP1_AnalisisNumerico2021
                             {
                                 bandera = true;
                                 break;
+                            }
+                            else
+                            {
+                                Xini = xr;
+                                Xant = xr;
                             }
                         }
                         
@@ -457,6 +487,11 @@ namespace TP1_AnalisisNumerico2021
                 lblEdit2.Text = "Variable X(d):";
                 btnBiseccion.Enabled = true;
                 btnReglaFalsa.Enabled = true;
+                txtFx.Enabled = true;
+                txtIter.Enabled = true;
+                txtMargenError.Enabled = true;
+                txtXdXini.Enabled = true;
+                txtXiFx.Enabled = true;
             }
             else
             {
@@ -467,6 +502,7 @@ namespace TP1_AnalisisNumerico2021
                 lblEdit1.Text = "-";
                 lblEdit2.Text = "-";
                 checkBoxAbierto.Enabled = true;
+                DesactivarTextBoxs();
             }
         }
 
@@ -478,8 +514,14 @@ namespace TP1_AnalisisNumerico2021
                 checkBoxCerrado.Checked = false;
                 lblEdit1.Text = "-";
                 lblEdit2.Text = "X ini:";
+                lblXini2.Text = "X ini 2:";
                 btnNewton.Enabled = true;
                 btnSecante.Enabled = true;
+                txtFx.Enabled = true;
+                txtIter.Enabled = true;
+                txtMargenError.Enabled = true;
+                txtXdXini.Enabled = true;
+                txtXini2.Enabled = true;
             }
             else
             {
@@ -489,13 +531,131 @@ namespace TP1_AnalisisNumerico2021
                 btnSecante.Enabled = false;
                 lblEdit1.Text = "-";
                 lblEdit2.Text = "-";
+                lblXini2.Text = "-";
                 checkBoxCerrado.Enabled = true;
+                DesactivarTextBoxs();
             }
         }
 
         private void btnSecante_Click(object sender, EventArgs e)
         {
+            Calculo AnalizadorDeFunciones = new Calculo();
 
+
+            char X = Convert.ToChar("x");
+            string FuncionFx = Convert.ToString(txtFx.Text);
+
+            bool condicion = AnalizadorDeFunciones.Sintaxis(FuncionFx, X);
+
+            if (txtFx.Text == "" | txtIter.Text == "" | txtMargenError.Text == "" | txtXdXini.Text == "" | txtXini2.Text == "")
+            {
+                lblSintaxis.Text = "Uno o varios campos no contienen datos, vuelva a escribirlos";
+                lblSintaxis.Visible = true;
+            }
+            else
+            {
+                int iter = Convert.ToInt32(txtIter.Text);
+                double xr = 0;
+                bool bandera = false;
+
+                lblSintaxis.Visible = false;
+
+                double Xini = Convert.ToDouble(txtXdXini.Text); // Convierto a double Xini
+                double Xini2 = Convert.ToDouble(txtXini2.Text); // Convierto a double Xini2
+                double Fxini = AnalizadorDeFunciones.EvaluaFx(Xini); // Evaluo F(xini) 
+
+                double absFxini = Math.Abs(Fxini);
+
+                double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
+
+                if (absFxini == 0) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
+                {
+                    lblConverge.Text = "SI";
+                    lblnfo.Text = "HAY RAIZ";
+                    lblIter.Text = "0";
+                    lblRaiz.Text = Convert.ToString(Xini);
+                }
+                else
+                {
+                    // INICIALIZO VARIABLES 
+
+                    int c = 0;
+                    double Xant = 0;
+                    double Fxini2 = 0;
+
+                    //----------------------------------------------
+
+                    while (c < iter)
+                    {
+                        c++; // Comienza a contar el contador de Iteraciones
+
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
+                        {
+                            Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
+                        }
+
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini2)
+                        {
+                            Fxini2 = AnalizadorDeFunciones.EvaluaFx(Xini2);
+                        }
+
+                        lblSintaxis.Visible = false;
+
+                        xr = ((Fxini2 * Xini) - (Fxini * Xini2)) / (Fxini2 - Fxini);
+
+                        double error = Math.Abs((xr - Xant) / xr); // Calculo el error
+
+                        //----CALCULO DE Fx(xr)-----------------------------------------
+
+                        double Fxr = 0;
+
+                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                        {
+                            Fxr = AnalizadorDeFunciones.EvaluaFx(xr);
+                            Fxr = Math.Abs(Fxr);
+                        }
+
+                        //-------------------------------- Condiciones del corte del while
+
+                        if (Fxr < tole)
+                        {
+                            bandera = true;
+                            break;
+                        }
+                        else
+                        {
+                            if (error < tole)
+                            {
+                                bandera = true;
+                                break;
+                            }
+                            else
+                            {
+                                Xini = Xini2;
+                                Xini2 = xr;
+                                Xant = xr;
+                            }
+                        }
+
+                    }
+
+                    if (!bandera)
+                    {
+                        lblConverge.Text = "NO";
+                        lblnfo.Text = "ITERACIONES MAXIMAS SUPERADAS";
+                    }
+                    else
+                    {
+                        lblConverge.Text = "SI";
+                        lblnfo.Text = "HAY RAIZ";
+                        lblIter.Text = Convert.ToString(c);
+                        lblRaiz.Text = Convert.ToString(xr);
+
+                    }
+                }
+
+
+            }
         }
     }
 }

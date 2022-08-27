@@ -54,6 +54,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.checkBoxCerrado = new System.Windows.Forms.CheckBox();
             this.checkBoxAbierto = new System.Windows.Forms.CheckBox();
+            this.txtXini2 = new System.Windows.Forms.TextBox();
+            this.lblXini2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -122,7 +124,7 @@
             // 
             // txtXdXini
             // 
-            this.txtXdXini.Location = new System.Drawing.Point(156, 116);
+            this.txtXdXini.Location = new System.Drawing.Point(156, 114);
             this.txtXdXini.Name = "txtXdXini";
             this.txtXdXini.Size = new System.Drawing.Size(100, 20);
             this.txtXdXini.TabIndex = 7;
@@ -306,11 +308,30 @@
             this.checkBoxAbierto.UseVisualStyleBackColor = true;
             this.checkBoxAbierto.CheckedChanged += new System.EventHandler(this.checkBoxAbierto_CheckedChanged);
             // 
+            // txtXini2
+            // 
+            this.txtXini2.Location = new System.Drawing.Point(373, 114);
+            this.txtXini2.Name = "txtXini2";
+            this.txtXini2.Size = new System.Drawing.Size(100, 20);
+            this.txtXini2.TabIndex = 26;
+            // 
+            // lblXini2
+            // 
+            this.lblXini2.AutoSize = true;
+            this.lblXini2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXini2.Location = new System.Drawing.Point(276, 112);
+            this.lblXini2.Name = "lblXini2";
+            this.lblXini2.Size = new System.Drawing.Size(15, 20);
+            this.lblXini2.TabIndex = 27;
+            this.lblXini2.Text = "-";
+            // 
             // Unidad1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 427);
+            this.Controls.Add(this.lblXini2);
+            this.Controls.Add(this.txtXini2);
             this.Controls.Add(this.checkBoxAbierto);
             this.Controls.Add(this.checkBoxCerrado);
             this.Controls.Add(this.button5);
@@ -338,6 +359,7 @@
             this.Controls.Add(this.lblEdit1);
             this.Controls.Add(this.label1);
             this.Name = "Unidad1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Unidad1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -372,5 +394,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.CheckBox checkBoxCerrado;
         private System.Windows.Forms.CheckBox checkBoxAbierto;
+        private System.Windows.Forms.TextBox txtXini2;
+        private System.Windows.Forms.Label lblXini2;
     }
 }

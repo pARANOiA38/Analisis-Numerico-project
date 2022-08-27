@@ -21,12 +21,21 @@ namespace TP1_AnalisisNumerico2021
         {
             Unidad1 nuevaUnidad1 = new Unidad1();
             nuevaUnidad1.Owner = this;
-            nuevaUnidad1.ShowDialog();
+            nuevaUnidad1.Show();
+            nuevaUnidad1.FormClosed += LogOut;
+
+            this.Hide();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LogOut(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }
