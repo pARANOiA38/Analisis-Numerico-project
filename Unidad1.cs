@@ -16,6 +16,7 @@ namespace TP1_AnalisisNumerico2021
         public Unidad1()
         {
             InitializeComponent();
+            
             lblSintaxis.Visible = false;
             btnBiseccion.Enabled = false;
             btnReglaFalsa.Enabled = false;
@@ -108,7 +109,7 @@ namespace TP1_AnalisisNumerico2021
                             double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
                             int iter = Convert.ToInt32(txtIter.Text);
 
-                            while (c < iter)
+                            while (c <= iter)
                             {
                                 resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
 
@@ -133,34 +134,15 @@ namespace TP1_AnalisisNumerico2021
 
                                 xant = xr;
 
-                                double Fxr = 0;
-
-                                //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
-
-                                if (resultadoFxr < 0)
-                                {
-                                    Fxr = resultadoFxr * -1;
-                                }
-                                else
-                                {
-                                    Fxr = resultadoFxr;
-                                }
+                                double Fxr = Math.Abs(resultadoFxr);
 
                                 //-------------------------------- Condiciones del corte del while
 
-                                if (Fxr < tole)
+                                if (Fxr < tole | error < tole)
                                 {
                                     bandera = true;
                                     break;
-                                }
-                                else
-                                {
-                                    if (error < tole)
-                                    {
-                                        bandera = true;
-                                        break;
-                                    }
-                                }
+                                } 
 
                             }
 
@@ -185,10 +167,7 @@ namespace TP1_AnalisisNumerico2021
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {            
-            this.Close();
-        }
+        private void button5_Click(object sender, EventArgs e) => this.Close();
 
         private void btnReglaFalsa_Click(object sender, EventArgs e)
         {
@@ -223,18 +202,16 @@ namespace TP1_AnalisisNumerico2021
                     double resultadoFxi = 0;
                     double resultadoFxd = 0;
 
-                    if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                    {
+                    //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                    //{
                         resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                    }
+                    //}
 
-                    if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                    {
+                    //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                    //{
                         resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
-                    }
+                    //}
 
-                    //double resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                    //double resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
                     double productoFxiFxd = resultadoFxd * resultadoFxi;
 
                     if (productoFxiFxd > 0)
@@ -271,20 +248,18 @@ namespace TP1_AnalisisNumerico2021
                             double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
                             int iter = Convert.ToInt32(txtIter.Text);
 
-                            while (c < iter)
+                            while (c <= iter)
                             {
-                                if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                                {
+                                //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                                //{
                                     resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                                }
+                                //}
 
-                                if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                                {
+                                //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                                //{
                                     resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
-                                }
+                                //}
 
-                                //resultadoFxi = AnalizadorDeFunciones.EvaluaFx(VarXi);
-                                //resultadoFxd = AnalizadorDeFunciones.EvaluaFx(VarXd);
 
                                 double productoFxdxi = resultadoFxd * VarXi;
                                 double productoFxixd = resultadoFxi * VarXd;
@@ -311,35 +286,15 @@ namespace TP1_AnalisisNumerico2021
 
                                 xant = xr;
 
-                                double Fxr = 0;
-
-                                //--- Lo de abajo lo hice asi porque math.abs() me tira un 0... :/--
-
-                                if (resultadoFxr < 0)
-                                {
-                                    Fxr = resultadoFxr * -1;
-                                }
-                                else
-                                {
-                                    Fxr = resultadoFxr;
-                                }
+                                double Fxr = Math.Abs(resultadoFxr);
 
                                 //-------------------------------- Condiciones del corte del while
 
-                                if (Fxr < tole)
+                                if (Fxr < tole | error < tole)
                                 {
                                     bandera = true;
                                     break;
-                                }
-                                else
-                                {
-                                    if (error < tole)
-                                    {
-                                        bandera = true;
-                                        break;
-                                    }
-                                }
-
+                                }                            
                             }
 
                             if (!bandera)
@@ -392,7 +347,7 @@ namespace TP1_AnalisisNumerico2021
 
                 double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
 
-                if (absFxini == 0) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
+                if (absFxini <= tole) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
                 {
                     lblConverge.Text = "SI";
                     lblnfo.Text = "HAY RAIZ";
@@ -408,18 +363,25 @@ namespace TP1_AnalisisNumerico2021
 
                     //----------------------------------------------
 
-                    while (c < iter)
+                    while (c <= iter)
                     {
                         c++; // Comienza a contar el contador de Iteraciones
 
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
-                        {
+                        //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
+                        //{
                             Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
-                        }                     
+                        //}                     
                                              
                         lblSintaxis.Visible = false;
 
                         double Fxiniprima = AnalizadorDeFunciones.Dx(Xini); // Calculo la derivada de Fx(xini) con CALCULUS
+
+                        if (Fxiniprima == 0 | double.IsNaN(Fxiniprima))
+                        {
+                            MessageBox.Show("Error: La derivada da valor 0 o no es un numero");
+
+                            break;
+                        }
 
                         xr = (Xini - (Fxini / Fxiniprima));
 
@@ -429,31 +391,25 @@ namespace TP1_AnalisisNumerico2021
 
                         double Fxr = 0;
 
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                        {
+                        //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                        //{
                             Fxr = AnalizadorDeFunciones.EvaluaFx(xr);
                             Fxr = Math.Abs(Fxr); 
-                        }
+                        //}
 
                         //-------------------------------- Condiciones del corte del while
 
-                        if (Fxr < tole)
+                        if (Fxr < tole | error < tole)
                         {
                             bandera = true;
                             break;
                         }
                         else
                         {
-                            if (error < tole)
-                            {
-                                bandera = true;
-                                break;
-                            }
-                            else
-                            {
-                                Xini = xr;
-                                Xant = xr;
-                            }
+                          
+                            Xini = xr;
+                            Xant = xr;
+                           
                         }
                         
                     }
@@ -568,7 +524,7 @@ namespace TP1_AnalisisNumerico2021
 
                 double tole = Convert.ToDouble(txtMargenError.Text.Replace(".", ","));
 
-                if (absFxini == 0) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
+                if (absFxini <= tole) // Pregunto si Fx(ini) es = 0, en caso de que si es porque Xini es la RAIZ.  
                 {
                     lblConverge.Text = "SI";
                     lblnfo.Text = "HAY RAIZ";
@@ -585,19 +541,19 @@ namespace TP1_AnalisisNumerico2021
 
                     //----------------------------------------------
 
-                    while (c < iter)
+                    while (c <= iter)
                     {
                         c++; // Comienza a contar el contador de Iteraciones
 
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
-                        {
+                        //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini)
+                        //{
                             Fxini = AnalizadorDeFunciones.EvaluaFx(Xini);
-                        }
+                        //}
 
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini2)
-                        {
+                        //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true) // Calculo de Fx(xini2)
+                        //{
                             Fxini2 = AnalizadorDeFunciones.EvaluaFx(Xini2);
-                        }
+                        //}
 
                         lblSintaxis.Visible = false;
 
@@ -609,32 +565,25 @@ namespace TP1_AnalisisNumerico2021
 
                         double Fxr = 0;
 
-                        if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
-                        {
+                        //if (AnalizadorDeFunciones.Sintaxis(FuncionFx, X) == true)
+                        //{
                             Fxr = AnalizadorDeFunciones.EvaluaFx(xr);
                             Fxr = Math.Abs(Fxr);
-                        }
+                        //}
 
                         //-------------------------------- Condiciones del corte del while
 
-                        if (Fxr < tole)
+                        if (Fxr < tole | error < tole)
                         {
                             bandera = true;
                             break;
                         }
                         else
                         {
-                            if (error < tole)
-                            {
-                                bandera = true;
-                                break;
-                            }
-                            else
-                            {
-                                Xini = Xini2;
-                                Xini2 = xr;
-                                Xant = xr;
-                            }
+                            Xini = Xini2;
+                            Xini2 = xr;
+                            Xant = xr;
+                            
                         }
 
                     }

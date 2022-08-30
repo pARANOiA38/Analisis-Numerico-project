@@ -12,11 +12,7 @@ namespace TP1_AnalisisNumerico2021
 {
     public partial class Menu : Form
     {
-        public Menu()
-        {
-            InitializeComponent();
-        }
-
+        public Menu() => InitializeComponent();
         private void btnUni1_Click(object sender, EventArgs e)
         {
             Unidad1 nuevaUnidad1 = new Unidad1();
@@ -27,15 +23,8 @@ namespace TP1_AnalisisNumerico2021
             this.Hide();
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void LogOut(object sender, FormClosedEventArgs e)
-        {
-            this.Show();
-        }
+        private void button1_Click(object sender, EventArgs e) => this.Close();
+        private void LogOut(object sender, FormClosedEventArgs e) => this.Show();
+       
     }
 }
