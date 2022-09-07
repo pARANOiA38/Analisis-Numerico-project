@@ -25,6 +25,15 @@ namespace TP1_AnalisisNumerico2021
         }
         private void button1_Click(object sender, EventArgs e) => this.Close();
         private void LogOut(object sender, FormClosedEventArgs e) => this.Show();
-       
+
+        private void btnUni2_Click(object sender, EventArgs e)
+        {
+            Unidad2 nuevaUnidad2 = new Unidad2();
+            nuevaUnidad2.Owner = this;
+            nuevaUnidad2.Show();
+            nuevaUnidad2.FormClosed += LogOut;
+
+            this.Hide();
+        }
     }
 }

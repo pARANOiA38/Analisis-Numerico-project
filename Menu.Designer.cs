@@ -57,6 +57,7 @@
             this.btnUni2.TabIndex = 1;
             this.btnUni2.Text = "UNIDAD 2";
             this.btnUni2.UseVisualStyleBackColor = true;
+            this.btnUni2.Click += new System.EventHandler(this.btnUni2_Click);
             // 
             // btnUni3
             // 

@@ -26,3 +26,4 @@ C:\Users\Supervisor-PC\Desktop\Emmanuel Schenoni\Analisis-Numerico-project\obj\D
 C:\Users\Supervisor-PC\Desktop\Emmanuel Schenoni\Analisis-Numerico-project\obj\Debug\TP1-AnalisisNumerico2022.csproj.CopyComplete
 C:\Users\Supervisor-PC\Desktop\Emmanuel Schenoni\Analisis-Numerico-project\obj\Debug\TP1-AnalisisNumerico2021.exe
 C:\Users\Supervisor-PC\Desktop\Emmanuel Schenoni\Analisis-Numerico-project\obj\Debug\TP1-AnalisisNumerico2021.pdb
+C:\Users\Emmanuel Schenoni\Repo\AnalisisNumerico2022\obj\Debug\TP1_AnalisisNumerico2021.Unidad2.resources
